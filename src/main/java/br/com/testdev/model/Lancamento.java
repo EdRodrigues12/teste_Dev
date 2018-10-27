@@ -4,21 +4,27 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@Table(name = "Lancamento")
 public class Lancamento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "oid ")
 	private int oid ;
 	@Column(name = "dt_inicial")
@@ -32,7 +38,16 @@ public class Lancamento implements Serializable {
 	@Column(name = "observacao")
 	private String observacao;
 	
-	
+//	@OneToMany(mappedBy = "pedido", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<Item> lancamentoItem;
+//	
+//
+//	public List<Item> getLancamentoItem() {
+//		return lancamentoItem;
+//	}
+//	public void setLancamentoItem(List<Item> lancamentoItem) {
+//		this.lancamentoItem = lancamentoItem;
+//	}
 	public int getOid() {
 		return oid;
 	}

@@ -18,10 +18,10 @@
 		</p:row>
 		<p:row>
 			<p:column>
-				<p:inputText id="descricao" value=""  style="width: 60%;" required="true"/>
+				<p:inputText id="descricao" value="#{mbItem.item.descricao}"  style="width: 60%;" required="true"/>
 			</p:column>
 			<p:column>
-				<pe:inputNumber id="valor" value="" symbol="R$ " dec0imalSeparator="," thousandSeparator="." decimalPlaces="2" style="width: 40%;"/>
+				<pe:inputNumber id="valor" value="#{mbItem.item.valor}" symbol="R$ " dec0imalSeparator="," thousandSeparator="." decimalPlaces="2" style="width: 40%;"/>
 			</p:column>
 			
 		</p:row>

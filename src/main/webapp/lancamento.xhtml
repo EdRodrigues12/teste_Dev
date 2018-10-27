@@ -12,21 +12,25 @@
 			<p:column style="width: 60%;">
 				<p:outputLabel value="Data Inicial: " for="dtini" />
 			</p:column>
-			<p:column style="width: 35%;">
+			<p:column style="width: 60%;">
 				<p:outputLabel value="Data Final:" for="dtfim" />
 			</p:column>
 		</p:row>
 		<p:row>
 			<p:column>
-				<p:calendar id="dtini"  mask="true" pattern="dd/MM/yyyy"
-					showOn="button" navigator="true" yearRange="c-100:+0" locale="pt"
-					style="width: 90%;">
+				<p:calendar id="dtini" mask="true" pattern="dd/MM/yyyy"
+					showOn="button" navigator="true"
+					value="#{mbLancamento.lancamento.dt_inicial}" yearRange="c-100:+0"
+					locale="pt" style="width: 90%;">
+					<p:ajax event="blur" process="@this" partialSubmit="true" global="false"/>
 				</p:calendar>
 			</p:column>
 			<p:column>
-				<p:calendar id="dtfim"  mask="true" pattern="dd/MM/yyyy"
-					showOn="button" navigator="true" yearRange="c-100:+0" locale="pt"
-					style="width: 90%;">
+				<p:calendar id="dtfim" mask="true" pattern="dd/MM/yyyy"
+					showOn="button" navigator="true"
+					value="#{mbLancamento.lancamento.dt_final}" yearRange="c-100:+0"
+					locale="pt" style="width: 90%;">
+					<p:ajax event="blur" process="@this" partialSubmit="true" global="false"/>
 				</p:calendar>
 			</p:column>
 
@@ -39,19 +43,43 @@
 		</p:row>
 		<p:row>
 			<p:column colspan="2">
-				<h:inputTextarea id="descricao" value="" rows="5"
+				<h:inputTextarea id="descricao"
+					value="#{mbLancamento.lancamento.observacao}" rows="5"
 					style="width: 80%;">
 					<p:ajax event="blur" process="@this" partialSubmit="true"
 						global="false" />
 				</h:inputTextarea>
 			</p:column>
 		</p:row>
+		<p:row>
+			<p:column colspan="3">
+				<p:panelGrid style="width: 100%;">
+					<p:row>
+						<p:column style="width: 99%;">
+							<p:inputText id="pesquisa" value="#{mbLancamento.valorPesquisa}"
+								style="width: 100%; height: 30px; font-size: 20px !important;"
+								placeholder="Digite aqui para pesquisar itens">
+								<p:ajax event="blur" update="itens" partialSubmit="true"
+									process="@this, pesquisa"/>
+							</p:inputText>
+						</p:column>
+						<p:column style="width: 1%;">
+							<p:commandButton id="btPesquisa" icon="ui-icon-search"
+								update="itens" partialSubmit="true"
+								process="@this, pesquisa"
+								actionListener="#{mbLancamento.pesquisar}"
+								style="float: right; height: 30px;" />
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+			</p:column>
+		</p:row>
 	</p:panelGrid>
 
 	<p:remoteCommand name="onCellEdit" global="false" update="itens"
 		process="@this" partialSubmit="true" />
-	<p:dataTable id="itens" value="" var="" emptyMessage=""
-		paginator="true" rows="8" paginatorPosition="bottom"
+	<p:dataTable id="itens" value="#{mbLancamento.itens}" var="itens"
+		emptyMessage="" paginator="true" rows="8" paginatorPosition="bottom"
 		paginatorAlwaysVisible="false" editable="true" editMode="cell">
 
 		<p:ajax event="cellEdit" oncomplete="onCellEdit()" global="false"
@@ -59,21 +87,18 @@
 		<p:ajax event="page" global="false" />
 
 
-		<p:column headerText="Seq" style="width: 50px;">
-			<h:outputText value="" />
+		<p:column headerText="Codigo Produto" style="width: 30%;">
+			<h:outputText value="#{itens.oid}" />
 		</p:column>
 
 
 		<p:column headerText="Descrição" style="width: 50%;">
-			<h:outputText value="" />
+			<h:outputText value="#{itens.descricao}" />
 		</p:column>
 
-		<p:column headerText="VALOR"
-			style="width: 80px; text-align: right;">
+		<p:column headerText="VALOR" style="width: 80px; text-align: right;">
 
-			<h:outputText value="">
-				<f:convertNumber currencySymbol="" type="currency"
-					minFractionDigits="#{mbLogin.empresa.precisaoValores}" />
+			<h:outputText value="#{itens.valor}">
 			</h:outputText>
 
 		</p:column>
@@ -82,10 +107,10 @@
 
 		<p:columnGroup type="footer">
 			<p:row>
-				<p:column colspan="7"
+				<p:column colspan="2"
 					style="text-align: right; font-weight: bold; font-size: 15px;"
 					footerText="Total Itens:" />
-				<p:column footerText=""
+				<p:column footerText="#{mbLancamento.lancamento.vl_total}"
 					style="text-align: right; font-size: 15px; font-weight: bold;" />
 			</p:row>
 

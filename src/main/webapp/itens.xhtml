@@ -19,7 +19,9 @@
 					<ui:include src="item.xhtml"/>
 					
 					<p:outputPanel style="border-top: 2px solid #DCDCDC; height: 25px; margin-top: 10px; padding-top: 5px;">
-						<p:commandButton id="salvar" value="Salvar" icon="btAdicionarIcon" title="Salvar" partialSubmit="true"  process="@form" update="@form" class="btAdicionar"/>
+						<p:commandButton id="salvar" value="Salvar" icon="btAdicionarIcon" title="Salvar" partialSubmit="true" actionListener="#{mbItem.salvar}"  process="@form" update="@form" class="btAdicionar"/>
+					
+						<p:commandButton id="pesquisar" value="Pesquisar" icon="btAdicionarIcon" title="Pesquisar" partialSubmit="true" actionListener="#{mbItem.pesquisar}"  process="@form" update="@form" class="btAdicionar"/>
 					</p:outputPanel>
 				</h:form>
 		

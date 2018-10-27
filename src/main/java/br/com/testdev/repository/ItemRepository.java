@@ -1,9 +1,14 @@
 package br.com.testdev.repository;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import br.com.testdev.model.Item;
 
@@ -29,7 +34,7 @@ public class ItemRepository implements Serializable {
 			return item;
 		}catch(Exception e){
 			manager.getTransaction().rollback();
-			throw new Exception("Não foi possível salvar o centro de custo");
+			throw new Exception("Não foi possível salvar ");
 		}
 	}
 	
@@ -40,8 +45,21 @@ public class ItemRepository implements Serializable {
 			return item;
 		}catch(Exception e){
 			manager.getTransaction().rollback();
-			throw new Exception("Não foi possível Atualizar o centro de custo");
+			throw new Exception("Não foi possível Atualizar");
 		}
+	}
+	
+	public Item pesquisarItem(String valorPesquisa) {
+		CriteriaBuilder criteriaBuilder = manager.getCriteriaBuilder();
+		
+		CriteriaQuery<Item> criteriaQuery = criteriaBuilder.createQuery(Item.class);		
+		Root<Item> root = criteriaQuery.from(Item.class);			
+		criteriaQuery.select(root);				
+		criteriaQuery.where(criteriaBuilder.like(root.get("descricao"), valorPesquisa + "%"));		
+		
+		TypedQuery<Item> query = manager.createQuery(criteriaQuery);
+		
+		return query.getSingleResult();
 	}
 
 }
