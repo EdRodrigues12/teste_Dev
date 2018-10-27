@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="default.css" />
+	<h:outputStylesheet library="css" name="cssLayout.css" />
+	<h:outputStylesheet library="css" name="endereco.css" />
+	<h:outputStylesheet library="css" name="cssThemeRoller.css" />
+	<h:outputScript library="javaScript" name="idiomaCalendario.js" />
+	<h:outputScript library="javaScript" name="fecharPopus.js" />
+	<h:outputScript library="javaScript" name="utilitarios.js" />
+	<title><ui:insert name="title">TESTE DEV</ui:insert></title>
+</h:head>
+
+<h:body>
+	<div id="top">
+		<ui:insert name="top">
+			<h:form id="frmMenu">
+				<div style="background: #0085c3; height: 60px; min-width: 600px; max-width: 100%;">
+					<div style="height: 20px;">
+						<div style="width: 235px; height: 50px; margin-top: 10px; float: left; margin-left: 10%;">
+							
+						</div>
+						
+					</div>
+
+					<p:menubar autoDisplay="false" style="float: left;">
+						<ui:insert name="menu">
+							<p:menuitem value="Home" outcome="home" icon="ui-icon-home" />
+							
+							<p:menuitem value="Itens" icon="ui-icon-suitcase" outcome="itens" />
+														
+							<p:menuitem value="Lançamentos" icon="ui-icon-suitcase" outcome="lancamentos" />
+							
+							<p:submenu label="Intersecão" icon="ui-icon-arrowreturnthick-1-e">
+								
+							</p:submenu>
+							
+						</ui:insert>
+					</p:menubar>
+				</div>
+			</h:form>
+		</ui:insert>
+	</div>
+
+	<div id="content" class="center_content">
+		<ui:insert name="content">Content</ui:insert>
+	</div>
+
+	<div id="bottom">
+		<ui:insert name="bottom">
+			<div style="height: 150px; font-size: 8px; padding-top: 30px;">
+				
+			</div>
+		</ui:insert>
+	</div>
+
+	<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+	<p:dialog widgetVar="statusDialog" modal="true" position="top" draggable="false" closable="false" resizable="false" showHeader="false" style="background: none !important; border: 0; margin-top: 10%; padding: 0px; background: none; overflow: auto; zoom: 1; box-shadow: none !important;">
+		<h:graphicImage library="images" name="ajax.gif" style="background: none !important;" />
+	</p:dialog>
+</h:body>
+</html>

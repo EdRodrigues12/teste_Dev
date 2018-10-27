@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="./WEB-INF/template/template.xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:o="http://omnifaces.org/ui">
+
+	<ui:define name="title">
+        Itens
+    </ui:define>
+
+	<ui:define name="content">
+								
+		<p:growl autoUpdate="true" showDetail="true" />
+
+
+				<h:form id="frmInfo" onkeypress="return travarEventoEnter(event)">
+					<ui:include src="item.xhtml"/>
+					
+					<p:outputPanel style="border-top: 2px solid #DCDCDC; height: 25px; margin-top: 10px; padding-top: 5px;">
+						<p:commandButton id="salvar" value="Salvar" icon="btAdicionarIcon" title="Salvar" partialSubmit="true"  process="@form" update="@form" class="btAdicionar"/>
+					</p:outputPanel>
+				</h:form>
+		
+	</ui:define>
+</ui:composition>

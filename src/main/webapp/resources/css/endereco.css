@@ -1,0 +1,117 @@
+.btAdicionar{
+	background: #0085c3 !important;
+	color: #ffffff !important;
+	border: #0085c3 !important;
+	float: right;
+}
+
+.btAdicionarIcon {
+	background-image: url("#{request.contextPath}/resources/images/ui-icons_ffffff_256x240.png") !important;
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+	background-position: -96px -112px;
+}
+
+.btIconSuitCase {
+	background-image: url("#{request.contextPath}/resources/images/ui-icons_ffffff_256x240.png") !important;
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+	background-position: -112px -96px;
+}
+
+.btPesquisarIcon {
+	background-image: url("#{request.contextPath}/resources/images/ui-icons_ffffff_256x240.png") !important;
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+	background-position: -160px -112px;
+}
+
+.btCopyIcon {
+	background-image: url("#{request.contextPath}/resources/images/ui-icons_ffffff_256x240.png") !important;
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+	background-position: -176px -128px
+}
+
+.btPrintIcon {
+	background-image: url("#{request.contextPath}/resources/images/ui-icons_ffffff_256x240.png") !important;
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+	background-position: -160px -96px;
+}
+
+.btPlusIcon {
+	background-image: url("#{request.contextPath}/resources/images/ui-icons_ffffff_256x240.png") !important;
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+	background-position: -16px -128px;
+}
+
+.btPencilIcon {
+	background-image: url("#{request.contextPath}/resources/images/ui-icons_ffffff_256x240.png") !important;
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+	background-position: -64px -112px;
+}
+
+.btExcluirIcon {
+	background-image: url("#{request.contextPath}/resources/images/ui-icons_ffffff_256x240.png") !important;
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+	background-position: -176px -96px;
+}
+
+.btRefreshIcon {
+	background-image: url("#{request.contextPath}/resources/images/ui-icons_ffffff_256x240.png") !important;
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+	background-position: -64px -80px;
+}
+
+.btEnviarIcon {
+	background-image: url("#{request.contextPath}/resources/images/ui-icons_ffffff_256x240.png") !important;
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+	background-position: -112px -80px;
+}
+
+/*
+.ui-growl-image-error {
+    background-image: url("#{request.contextPath}/resources/images/error.png") !important;
+    width: 32px !important;
+	height: 32px !important;
+}
+
+.ui-growl-icon-close {
+	background-image: url("#{request.contextPath}/resources/images/ui-icons_ffffff_256x240.png") !important;
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+	background-position: -96px -128px;
+}
+*/
+/*#{resource['images/icon_cadastro.png']}*/
+
+.ui-growl-image-error {
+    background-image: url("#{resource['images/error.png']}") !important;
+    width: 32px !important;
+	height: 32px !important;
+}
+
+.ui-growl-icon-close {
+	background-image: url("#{resource['images/ui-icons_ffffff_256x240.png']}") !important;
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+	background-position: -96px -128px;
+}

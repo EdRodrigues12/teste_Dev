@@ -1,0 +1,98 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+	<p:outputLabel value="Informações" style="font-size: 20px;" />
+	<p:separator />
+	<p:panelGrid id="infoPessoais" style="width: 100%;">
+		<p:row>
+			<p:column style="width: 60%;">
+				<p:outputLabel value="Data Inicial: " for="dtini" />
+			</p:column>
+			<p:column style="width: 35%;">
+				<p:outputLabel value="Data Final:" for="dtfim" />
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column>
+				<p:calendar id="dtini"  mask="true" pattern="dd/MM/yyyy"
+					showOn="button" navigator="true" yearRange="c-100:+0" locale="pt"
+					style="width: 90%;">
+				</p:calendar>
+			</p:column>
+			<p:column>
+				<p:calendar id="dtfim"  mask="true" pattern="dd/MM/yyyy"
+					showOn="button" navigator="true" yearRange="c-100:+0" locale="pt"
+					style="width: 90%;">
+				</p:calendar>
+			</p:column>
+
+		</p:row>
+		<p:row>
+
+			<p:column style="width: 60%;">
+				<p:outputLabel value="Observação: " for="descricao" />
+			</p:column>
+		</p:row>
+		<p:row>
+			<p:column colspan="2">
+				<h:inputTextarea id="descricao" value="" rows="5"
+					style="width: 80%;">
+					<p:ajax event="blur" process="@this" partialSubmit="true"
+						global="false" />
+				</h:inputTextarea>
+			</p:column>
+		</p:row>
+	</p:panelGrid>
+
+	<p:remoteCommand name="onCellEdit" global="false" update="itens"
+		process="@this" partialSubmit="true" />
+	<p:dataTable id="itens" value="" var="" emptyMessage=""
+		paginator="true" rows="8" paginatorPosition="bottom"
+		paginatorAlwaysVisible="false" editable="true" editMode="cell">
+
+		<p:ajax event="cellEdit" oncomplete="onCellEdit()" global="false"
+			process="@this" partialSubmit="true" />
+		<p:ajax event="page" global="false" />
+
+
+		<p:column headerText="Seq" style="width: 50px;">
+			<h:outputText value="" />
+		</p:column>
+
+
+		<p:column headerText="Descrição" style="width: 50%;">
+			<h:outputText value="" />
+		</p:column>
+
+		<p:column headerText="VALOR"
+			style="width: 80px; text-align: right;">
+
+			<h:outputText value="">
+				<f:convertNumber currencySymbol="" type="currency"
+					minFractionDigits="#{mbLogin.empresa.precisaoValores}" />
+			</h:outputText>
+
+		</p:column>
+
+
+
+		<p:columnGroup type="footer">
+			<p:row>
+				<p:column colspan="7"
+					style="text-align: right; font-weight: bold; font-size: 15px;"
+					footerText="Total Itens:" />
+				<p:column footerText=""
+					style="text-align: right; font-size: 15px; font-weight: bold;" />
+			</p:row>
+
+		</p:columnGroup>
+
+
+	</p:dataTable>
+
+
+</ui:composition>
